@@ -36,14 +36,20 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ themes, currentTheme, onT
 // Helper function to get preview colors for themes
 function getThemePreviewColor(themeClass: string): string {
   switch (themeClass) {
-    case 'dark':
-      return 'linear-gradient(135deg, #0f172a 0%, #020617 100%)';
-    case 'light':
-      return 'linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)';
-    case 'blue':
-      return 'linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%)';
-    case 'green':
-      return 'linear-gradient(135deg, #064e3b 0%, #052e16 100%)';
+    case 'midnight':
+      return 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)';
+    case 'cloud':
+      return 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)';
+    case 'ocean':
+      return 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)';
+    case 'grass':
+      return 'linear-gradient(135deg, #4ade80 0%, #16a34a 100%)';
+    case 'cherry':
+      return 'linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 100%)';
+    case 'citrus':
+      return 'linear-gradient(135deg, #fdba74 0%, #fb923c 100%)';
+    case 'lavender':
+      return 'linear-gradient(135deg, #c4b5fd 0%, #a78bfa 100%)';
     default:
       return '#0f172a';
   }

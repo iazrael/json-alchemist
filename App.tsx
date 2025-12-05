@@ -24,10 +24,13 @@ const SAMPLE_JSON = `{
 }`;
 
 const THEMES: ThemeConfig[] = [
-  { name: '深色主题', classPrefix: 'dark' },
-  { name: '浅色主题', classPrefix: 'light' },
-  { name: '蓝调主题', classPrefix: 'blue' },
-  { name: '绿调主题', classPrefix: 'green' }
+  { name: '月夜黑主题', classPrefix: 'midnight' },
+  { name: '云朵白主题', classPrefix: 'cloud' },
+  { name: '海洋蓝主题', classPrefix: 'ocean' },
+  { name: '青草绿主题', classPrefix: 'grass' },
+  { name: '樱花粉主题', classPrefix: 'cherry' },
+  { name: '橘子橙主题', classPrefix: 'citrus' },
+  { name: '紫色主题', classPrefix: 'lavender' }
 ];
 
 const DEFAULT_CONFIG: AIConfig = {
@@ -209,7 +212,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen bg-primary text-secondary">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-800 border-b border-slate-800">
+      <header className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-bg-secondary to-bg-primary border-b border-color">
         <div className="flex items-center">
           <div className="p-2 bg-brand-500/10 rounded-lg mr-3">
             <Code2 className="text-brand-500" size={24} />

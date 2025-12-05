@@ -35,13 +35,13 @@ const Toolbar: React.FC<ToolbarProps> = ({
   isCopied
 }) => {
   return (
-    <div className="flex flex-wrap items-center gap-2 p-2 bg-secondary border-b border-color">
+    <div className="flex flex-wrap items-center gap-2 p-2 bg-secondary/50 border-b border-color">
       
       {/* Primary Actions */}
-      <div className="flex items-center gap-1 bg-slate-800/50 p-1 rounded-lg">
+      <div className="flex items-center gap-1 bg-secondary/30 p-1 rounded-lg">
         <button
           onClick={onFormat}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-secondary hover:text-primary hover:bg-slate-700 rounded-md transition-all duration-200 transform hover:scale-105"
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-secondary hover:text-primary hover:bg-secondary/50 rounded-md transition-all duration-200 transform hover:scale-105"
           title="Format (Beautify)"
         >
           <AlignLeft size={16} />
@@ -49,7 +49,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
         </button>
         <button
           onClick={onMinify}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-secondary hover:text-primary hover:bg-slate-700 rounded-md transition-all duration-200 transform hover:scale-105"
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-secondary hover:text-primary hover:bg-secondary/50 rounded-md transition-all duration-200 transform hover:scale-105"
           title="Minify (Compress)"
         >
           <Minimize2 size={16} />
@@ -58,10 +58,10 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </div>
 
       {/* Secondary Actions */}
-      <div className="flex items-center gap-1 bg-slate-800/50 p-1 rounded-lg">
+      <div className="flex items-center gap-1 bg-secondary/30 p-1 rounded-lg">
         <button
           onClick={onStripComments}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-amber-300/80 hover:text-amber-200 hover:bg-slate-700 rounded-md transition-all duration-200 transform hover:scale-105"
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-amber-300/80 hover:text-amber-200 hover:bg-secondary/50 rounded-md transition-all duration-200 transform hover:scale-105"
           title="Remove Line Comments"
         >
           <MessageSquareOff size={16} />
@@ -88,14 +88,14 @@ const Toolbar: React.FC<ToolbarProps> = ({
       <div className="flex items-center gap-1">
          <button
           onClick={onSettings}
-          className="p-2 text-secondary hover:text-primary hover:bg-slate-800 rounded-md transition-all duration-200 transform hover:scale-105"
+          className="p-2 text-secondary hover:text-primary hover:bg-secondary/50 rounded-md transition-all duration-200 transform hover:scale-105"
           title="AI Settings"
         >
           <Settings size={18} />
         </button>
          <button
           onClick={onClear}
-          className="p-2 text-secondary hover:text-red-400 hover:bg-slate-800 rounded-md transition-all duration-200 transform hover:scale-105"
+          className="p-2 text-secondary hover:text-red-400 hover:bg-secondary/50 rounded-md transition-all duration-200 transform hover:scale-105"
           title="Clear Input"
         >
           <Trash2 size={18} />
