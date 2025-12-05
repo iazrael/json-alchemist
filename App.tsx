@@ -126,11 +126,8 @@ const App: React.FC = () => {
       const formatted = formatJson(fixed);
       setOutput(formatted);
       
-      // Update input logic: if we were fixing broken JSON, maybe update input?
-      // Keeping original behavior: only update input if not converting form Go
-      if (detectedType !== 'GO') {
-          setInput(fixed);
-      }
+      // Removed the logic that updates the input to preserve original content
+      // This ensures the input remains unchanged after AI fixing
       
       setStatus(ProcessStatus.Success);
     } catch (e: any) {
