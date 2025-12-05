@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="#4F46E5"/>
+  
+  <!-- Magic sparkles -->
+  <circle cx="30" cy="30" r="2" fill="white" opacity="0.8"/>
+  <circle cx="70" cy="30" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="30" cy="70" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="70" cy="70" r="2" fill="white" opacity="0.8"/>
+  <circle cx="50" cy="20" r="1" fill="white" opacity="0.8"/>
+  <circle cx="50" cy="80" r="1" fill="white" opacity="0.8"/>
+  <circle cx="20" cy="50" r="1" fill="white" opacity="0.8"/>
+  <circle cx="80" cy="50" r="1" fill="white" opacity="0.8"/>
+  
+  <!-- JSON Brackets -->
+  <path d="M35 25 L25 25 L25 75 L35 75" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M65 25 L75 25 L75 75 L65 75" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Magical glow effect -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="#818CF8" stroke-width="2" opacity="0.5">
+    <animate attributeName="r" values="45;48;45" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>
