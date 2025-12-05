@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { stripComments, formatJson, minifyJson, validateJson, isGoLike } from './services/jsonUtils';
-import { fixJsonWithGemini } from './services/geminiService';
 import { fixJsonWithOpenAI } from './services/openaiService';
 import Toolbar from './components/Toolbar';
 import SettingsModal from './components/SettingsModal';
@@ -34,15 +33,15 @@ const THEMES: ThemeConfig[] = [
 ];
 
 const DEFAULT_CONFIG: AIConfig = {
-  provider: 'GEMINI',
+  provider: 'OPENAI',
   openAi: {
     baseUrl: 'https://api.openai.com/v1',
     apiKey: '',
     model: 'gpt-3.5-turbo'
   },
   theme: {
-    name: '深色主题',
-    classPrefix: 'dark'
+    name: '月夜黑主题',
+    classPrefix: 'midnight'
   }
 };
 
@@ -121,11 +120,7 @@ const App: React.FC = () => {
     setError(null);
     try {
       let fixed = '';
-      if (aiConfig.provider === 'OPENAI') {
-        fixed = await fixJsonWithOpenAI(input, aiConfig.openAi);
-      } else {
-        fixed = await fixJsonWithGemini(input);
-      }
+      fixed = await fixJsonWithOpenAI(input, aiConfig.openAi);
       
       // Auto-format the result from AI for better readability
       const formatted = formatJson(fixed);
@@ -212,7 +207,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen bg-primary text-secondary">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-bg-secondary to-bg-primary border-b border-color">
+      <header className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-header-bg-from to-header-bg-to border-b border-color">
         <div className="flex items-center">
           <div className="p-2 bg-brand-500/10 rounded-lg mr-3">
             <Code2 className="text-brand-500" size={24} />
@@ -288,7 +283,7 @@ const App: React.FC = () => {
           {status === ProcessStatus.Processing ? (
              <div className="flex items-center text-purple-400 gap-2">
                <div className="animate-spin h-3 w-3 border-2 border-current border-t-transparent rounded-full" />
-               <span>Processing with {aiConfig.provider === 'GEMINI' ? 'Gemini AI' : 'Custom AI'}...</span>
+               <span>Processing with Custom AI...</span>
              </div>
           ) : error ? (
              <div className="flex items-center text-amber-400 gap-2 overflow-hidden">

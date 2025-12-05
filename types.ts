@@ -15,7 +15,7 @@ export interface ProcessingResult {
   error?: string;
 }
 
-export type AIProvider = 'GEMINI' | 'OPENAI';
+export type AIProvider = 'OPENAI';
 
 export interface OpenAIConfig {
   baseUrl: string;

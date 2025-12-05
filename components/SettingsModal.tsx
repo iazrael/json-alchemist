@@ -42,94 +42,71 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, config, 
 
         {/* Body */}
         <div className="p-6 space-y-6">
-          {/* Provider Selection */}
+          {/* Provider Selection - REMOVED GEMINI OPTION */}
           <div className="space-y-3">
             <label className="text-sm font-medium text-secondary">AI Provider</label>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3">
+              {/* Only OpenAI option now */}
               <button
-                onClick={() => setLocalConfig({ ...localConfig, provider: 'GEMINI' })}
-                className={`flex flex-col items-center justify-center p-3 rounded-lg border transition-all ${
-                  localConfig.provider === 'GEMINI'
-                    ? 'bg-brand-500/10 border-brand-500 text-brand-400'
-                    : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-800/80'
-                }`}
-              >
-                <span className="font-semibold">Gemini</span>
-                <span className="text-[10px] opacity-70 mt-1">Default (Free)</span>
-              </button>
-              <button
-                onClick={() => setLocalConfig({ ...localConfig, provider: 'OPENAI' })}
-                className={`flex flex-col items-center justify-center p-3 rounded-lg border transition-all ${
-                  localConfig.provider === 'OPENAI'
-                    ? 'bg-brand-500/10 border-brand-500 text-brand-400'
-                    : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-800/80'
-                }`}
+                className={`flex flex-col items-center justify-center p-3 rounded-lg border transition-all bg-brand-500/10 border-brand-500 text-brand-400`}
+                disabled
               >
                 <span className="font-semibold">OpenAI Compatible</span>
-                <span className="text-[10px] opacity-70 mt-1">Custom / Local</span>
+                <span className="text-[10px] opacity-70 mt-1">Default</span>
               </button>
             </div>
           </div>
 
-          {/* Configuration Fields */}
-          {localConfig.provider === 'GEMINI' ? (
-            <div className="p-4 bg-secondary/50 rounded-lg border border-color/50 flex items-start gap-3">
-               <div className="text-emerald-400 mt-0.5"><Save size={16} /></div>
-               <div className="text-sm text-secondary">
-                 Using built-in Google Gemini integration. API Key is managed securely via environment variables.
-               </div>
+          {/* Configuration Fields - Always show OpenAI settings now */}
+          <div className="space-y-4 animate-in fade-in slide-in-from-top-2">
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-secondary">Base URL</label>
+              <input
+                type="text"
+                value={localConfig.openAi.baseUrl}
+                onChange={(e) => setLocalConfig({
+                  ...localConfig,
+                  openAi: { ...localConfig.openAi, baseUrl: e.target.value }
+                })}
+                placeholder="https://api.openai.com/v1"
+                className="w-full bg-primary border border-color rounded-md px-3 py-2 text-sm text-primary focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
+              />
+              <p className="text-[10px] text-slate-500">Endpoint root (e.g. for LocalAI, vLLM, DeepSeek)</p>
             </div>
-          ) : (
-            <div className="space-y-4 animate-in fade-in slide-in-from-top-2">
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-secondary">Base URL</label>
-                <input
-                  type="text"
-                  value={localConfig.openAi.baseUrl}
-                  onChange={(e) => setLocalConfig({
-                    ...localConfig,
-                    openAi: { ...localConfig.openAi, baseUrl: e.target.value }
-                  })}
-                  placeholder="https://api.openai.com/v1"
-                  className="w-full bg-primary border border-color rounded-md px-3 py-2 text-sm text-primary focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
-                />
-                <p className="text-[10px] text-slate-500">Endpoint root (e.g. for LocalAI, vLLM, DeepSeek)</p>
-              </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-secondary">API Key</label>
-                <input
-                  type="password"
-                  value={localConfig.openAi.apiKey}
-                  onChange={(e) => setLocalConfig({
-                    ...localConfig,
-                    openAi: { ...localConfig.openAi, apiKey: e.target.value }
-                  })}
-                  placeholder="sk-..."
-                  className="w-full bg-primary border border-color rounded-md px-3 py-2 text-sm text-primary focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-secondary">Model Name</label>
-                <input
-                  type="text"
-                  value={localConfig.openAi.model}
-                  onChange={(e) => setLocalConfig({
-                    ...localConfig,
-                    openAi: { ...localConfig.openAi, model: e.target.value }
-                  })}
-                  placeholder="gpt-3.5-turbo"
-                  className="w-full bg-primary border border-color rounded-md px-3 py-2 text-sm text-primary focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
-                />
-              </div>
-              
-              <div className="flex items-center gap-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-md text-amber-200/80 text-xs">
-                <AlertTriangle size={14} />
-                <span>API Keys are stored in your browser's LocalStorage.</span>
-              </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-secondary">API Key</label>
+              <input
+                type="password"
+                value={localConfig.openAi.apiKey}
+                onChange={(e) => setLocalConfig({
+                  ...localConfig,
+                  openAi: { ...localConfig.openAi, apiKey: e.target.value }
+                })}
+                placeholder="sk-..."
+                className="w-full bg-primary border border-color rounded-md px-3 py-2 text-sm text-primary focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
+              />
             </div>
-          )}
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-secondary">Model Name</label>
+              <input
+                type="text"
+                value={localConfig.openAi.model}
+                onChange={(e) => setLocalConfig({
+                  ...localConfig,
+                  openAi: { ...localConfig.openAi, model: e.target.value }
+                })}
+                placeholder="gpt-3.5-turbo"
+                className="w-full bg-primary border border-color rounded-md px-3 py-2 text-sm text-primary focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50"
+              />
+            </div>
+            
+            <div className="flex items-center gap-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-md text-amber-200/80 text-xs">
+              <AlertTriangle size={14} />
+              <span>API Keys are stored in your browser's LocalStorage.</span>
+            </div>
+          </div>
 
         </div>
 

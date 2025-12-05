@@ -46,67 +46,95 @@
       }
       
       /* Theme variables */
-      :root.dark {
+      :root.midnight {
         --bg-primary: #020617; /* slate-950 */
         --bg-secondary: #0f172a; /* slate-900 */
         --text-primary: #e2e8f0; /* slate-200 */
         --text-secondary: #94a3b8; /* slate-400 */
         --border-color: #1e293b; /* slate-800 */
         --accent-color: #818cf8; /* brand-500 */
+        --button-bg: #1e293b;
+        --button-hover: #334155;
+        --header-bg-from: #0f172a;
+        --header-bg-to: #1e293b;
       }
       
-      :root.light {
+      :root.cloud {
         --bg-primary: #fafafa; /* neutral-50 */
         --bg-secondary: #f5f5f5; /* neutral-100 */
         --text-primary: #171717; /* neutral-900 */
         --text-secondary: #525252; /* neutral-600 */
         --border-color: #e5e5e5; /* neutral-200 */
         --accent-color: #4f46e5; /* brand-600 */
+        --button-bg: #e5e5e5;
+        --button-hover: #d4d4d4;
+        --header-bg-from: #f8fafc;
+        --header-bg-to: #e2e8f0;
       }
       
-      :root.blue {
+      :root.ocean {
         --bg-primary: #0c4a6e; /* blue-950 */
         --bg-secondary: #0369a1; /* blue-900 */
         --text-primary: #e0f2fe; /* blue-100 */
         --text-secondary: #bae6fd; /* blue-300 */
         --border-color: #075985; /* blue-800 */
         --accent-color: #22d3ee; /* cyan-400 */
+        --button-bg: #075985;
+        --button-hover: #0891b2;
+        --header-bg-from: #0ea5e9;
+        --header-bg-to: #0284c7;
       }
       
-      :root.green {
+      :root.grass {
         --bg-primary: #052e16; /* emerald-950 */
         --bg-secondary: #064e3b; /* emerald-900 */
         --text-primary: #d1fae5; /* emerald-100 */
         --text-secondary: #6ee7b7; /* emerald-300 */
         --border-color: #047857; /* emerald-800 */
         --accent-color: #a3e635; /* lime-400 */
+        --button-bg: #047857;
+        --button-hover: #059669;
+        --header-bg-from: #4ade80;
+        --header-bg-to: #16a34a;
       }
       
-      :root.pink {
-        --bg-primary: #FFF0F5; /* lavender blush */
-        --bg-secondary: #FFB7C5; /* cherry blossom pink */
-        --text-primary: #222222; /* dark gray */
-        --text-secondary: #444444; /* medium gray */
-        --border-color: #FF69B4; /* hot pink */
-        --accent-color: #FF1493; /* deep pink */
+      :root.cherry {
+        --bg-primary: #fdf2f8; /* pink-50 */
+        --bg-secondary: #fce7f3; /* pink-100 */
+        --text-primary: #831843; /* pink-900 */
+        --text-secondary: #be185d; /* pink-700 */
+        --border-color: #fbcfe8; /* pink-200 */
+        --accent-color: #ec4899; /* pink-500 */
+        --button-bg: #fbcfe8;
+        --button-hover: #f9a8d4;
+        --header-bg-from: #fbcfe8;
+        --header-bg-to: #f9a8d4;
       }
       
-      :root.orange {
-        --bg-primary: #FFE5B4; /* peach */
-        --bg-secondary: #FFA500; /* orange */
-        --text-primary: #FFFFFF; /* white */
-        --text-secondary: #222222; /* dark gray */
-        --border-color: #FF8C00; /* dark orange */
-        --accent-color: #FF4500; /* orange red */
+      :root.citrus {
+        --bg-primary: #fff7ed; /* orange-50 */
+        --bg-secondary: #ffedd5; /* orange-100 */
+        --text-primary: #9a3412; /* orange-900 */
+        --text-secondary: #c2410c; /* orange-700 */
+        --border-color: #fed7aa; /* orange-200 */
+        --accent-color: #f97316; /* orange-500 */
+        --button-bg: #fed7aa;
+        --button-hover: #fdba74;
+        --header-bg-from: #fdba74;
+        --header-bg-to: #fb923c;
       }
       
-      :root.purple {
-        --bg-primary: #E6E6FA; /* lavender */
-        --bg-secondary: #800080; /* purple */
-        --text-primary: #FFFFFF; /* white */
-        --text-secondary: #DDDDDD; /* light gray */
-        --border-color: #4B0082; /* indigo */
-        --accent-color: #9370DB; /* medium purple */
+      :root.lavender {
+        --bg-primary: #f5f3ff; /* violet-50 */
+        --bg-secondary: #ede9fe; /* violet-100 */
+        --text-primary: #3b0764; /* violet-900 */
+        --text-secondary: #5b21b6; /* violet-700 */
+        --border-color: #ddd6fe; /* violet-200 */
+        --accent-color: #8b5cf6; /* violet-500 */
+        --button-bg: #ddd6fe;
+        --button-hover: #c4b5fd;
+        --header-bg-from: #c4b5fd;
+        --header-bg-to: #a78bfa;
       }
       
       /* Apply theme variables */
@@ -117,6 +145,9 @@
       .border-color { border-color: var(--border-color, #1e293b); }
       .text-accent { color: var(--accent-color, #818cf8); }
       .bg-accent { background-color: var(--accent-color, #818cf8); }
+      .bg-button-hover { background-color: var(--button-hover, #334155); }
+      .from-header-bg-from { background-color: var(--header-bg-from, #0f172a); }
+      .to-header-bg-to { background-color: var(--header-bg-to, #1e293b); }
     </style>
   <script type="importmap">
 {
