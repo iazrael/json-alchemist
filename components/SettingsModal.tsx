@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save, AlertTriangle, Palette } from 'lucide-react';
-import { AIConfig, AIProvider, ThemeConfig } from '../types';
+import { X, Save, AlertTriangle } from 'lucide-react';
+import { AIConfig, AIProvider } from '../types';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -8,13 +8,6 @@ interface SettingsModalProps {
   config: AIConfig;
   onSave: (config: AIConfig) => void;
 }
-
-const THEMES: ThemeConfig[] = [
-  { name: '深色主题', classPrefix: 'dark' },
-  { name: '浅色主题', classPrefix: 'light' },
-  { name: '蓝调主题', classPrefix: 'blue' },
-  { name: '绿调主题', classPrefix: 'green' }
-];
 
 const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, config, onSave }) => {
   const [localConfig, setLocalConfig] = useState<AIConfig>(config);
@@ -49,30 +42,6 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, config, 
 
         {/* Body */}
         <div className="p-6 space-y-6">
-          
-          {/* Theme Selection */}
-          <div className="space-y-3">
-            <label className="text-sm font-medium text-secondary flex items-center gap-2">
-              <Palette size={16} />
-              主题配色
-            </label>
-            <div className="grid grid-cols-2 gap-3">
-              {THEMES.map((theme) => (
-                <button
-                  key={theme.classPrefix}
-                  onClick={() => setLocalConfig({ ...localConfig, theme })}
-                  className={`flex flex-col items-center justify-center p-3 rounded-lg border transition-all ${
-                    localConfig.theme?.classPrefix === theme.classPrefix
-                      ? 'bg-brand-500/10 border-brand-500 text-brand-400'
-                      : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-800/80'
-                  }`}
-                >
-                  <span className="font-semibold">{theme.name}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* Provider Selection */}
           <div className="space-y-3">
             <label className="text-sm font-medium text-secondary">AI Provider</label>

@@ -41,7 +41,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       <div className="flex items-center gap-1 bg-slate-800/50 p-1 rounded-lg">
         <button
           onClick={onFormat}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-secondary hover:text-primary hover:bg-slate-700 rounded-md transition-colors"
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-secondary hover:text-primary hover:bg-slate-700 rounded-md transition-all duration-200 transform hover:scale-105"
           title="Format (Beautify)"
         >
           <AlignLeft size={16} />
@@ -49,7 +49,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
         </button>
         <button
           onClick={onMinify}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-secondary hover:text-primary hover:bg-slate-700 rounded-md transition-colors"
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-secondary hover:text-primary hover:bg-slate-700 rounded-md transition-all duration-200 transform hover:scale-105"
           title="Minify (Compress)"
         >
           <Minimize2 size={16} />
@@ -61,7 +61,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       <div className="flex items-center gap-1 bg-slate-800/50 p-1 rounded-lg">
         <button
           onClick={onStripComments}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-amber-300/80 hover:text-amber-200 hover:bg-slate-700 rounded-md transition-colors"
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-amber-300/80 hover:text-amber-200 hover:bg-slate-700 rounded-md transition-all duration-200 transform hover:scale-105"
           title="Remove Line Comments"
         >
           <MessageSquareOff size={16} />
@@ -70,7 +70,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
         <button
           onClick={onAiFix}
           disabled={status === ProcessStatus.Processing}
-          className={`flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md transition-all
+          className={`flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200 transform hover:scale-105
             ${status === ProcessStatus.Processing 
               ? 'text-purple-400/50 cursor-not-allowed' 
               : 'text-purple-400 hover:text-purple-300 hover:bg-purple-900/20 shadow-[0_0_10px_rgba(168,85,247,0.1)]'
@@ -88,21 +88,21 @@ const Toolbar: React.FC<ToolbarProps> = ({
       <div className="flex items-center gap-1">
          <button
           onClick={onSettings}
-          className="p-2 text-secondary hover:text-primary hover:bg-slate-800 rounded-md transition-colors"
+          className="p-2 text-secondary hover:text-primary hover:bg-slate-800 rounded-md transition-all duration-200 transform hover:scale-105"
           title="AI Settings"
         >
           <Settings size={18} />
         </button>
          <button
           onClick={onClear}
-          className="p-2 text-secondary hover:text-red-400 hover:bg-slate-800 rounded-md transition-colors"
+          className="p-2 text-secondary hover:text-red-400 hover:bg-slate-800 rounded-md transition-all duration-200 transform hover:scale-105"
           title="Clear Input"
         >
           <Trash2 size={18} />
         </button>
         <button
           onClick={onCopy}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-emerald-400 hover:bg-emerald-950/30 rounded-md transition-colors border border-emerald-900/50"
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-emerald-400 hover:bg-emerald-950/30 rounded-md transition-all duration-200 transform hover:scale-105 border border-emerald-900/50"
           title="Copy Output"
         >
           {isCopied ? <Check size={16} /> : <Copy size={16} />}

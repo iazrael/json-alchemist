@@ -4,7 +4,8 @@ import { fixJsonWithGemini } from './services/geminiService';
 import { fixJsonWithOpenAI } from './services/openaiService';
 import Toolbar from './components/Toolbar';
 import SettingsModal from './components/SettingsModal';
-import { ProcessStatus, AIConfig } from './types';
+import ThemeSelector from './components/ThemeSelector';
+import { ProcessStatus, AIConfig, ThemeConfig } from './types';
 import { AlertCircle, Code2, CheckCircle2, FileJson } from 'lucide-react';
 
 const SAMPLE_JSON = `{
@@ -21,6 +22,13 @@ const SAMPLE_JSON = `{
   "isAwesome": true,
   "oops": "missing_comma" 
 }`;
+
+const THEMES: ThemeConfig[] = [
+  { name: '深色主题', classPrefix: 'dark' },
+  { name: '浅色主题', classPrefix: 'light' },
+  { name: '蓝调主题', classPrefix: 'blue' },
+  { name: '绿调主题', classPrefix: 'green' }
+];
 
 const DEFAULT_CONFIG: AIConfig = {
   provider: 'GEMINI',
@@ -194,19 +202,30 @@ const App: React.FC = () => {
     setStatus(ProcessStatus.Idle);
   };
 
+  const handleThemeChange = (newTheme: ThemeConfig) => {
+    setAiConfig({ ...aiConfig, theme: newTheme });
+  };
+
   return (
     <div className="flex flex-col h-screen bg-primary text-secondary">
       {/* Header */}
-      <header className="flex items-center px-6 py-4 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-800 border-b border-slate-800">
-        <div className="p-2 bg-brand-500/10 rounded-lg mr-3">
-          <Code2 className="text-brand-500" size={24} />
+      <header className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-800 border-b border-slate-800">
+        <div className="flex items-center">
+          <div className="p-2 bg-brand-500/10 rounded-lg mr-3">
+            <Code2 className="text-brand-500" size={24} />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+              JSON Alchemist
+            </h1>
+            <p className="text-xs text-slate-500 font-medium">Formatter, Validator & AI Repair</p>
+          </div>
         </div>
-        <div>
-          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
-            JSON Alchemist
-          </h1>
-          <p className="text-xs text-slate-500 font-medium">Formatter, Validator & AI Repair</p>
-        </div>
+        <ThemeSelector 
+          themes={THEMES} 
+          currentTheme={theme} 
+          onThemeChange={handleThemeChange} 
+        />
       </header>
 
       {/* Toolbar */}
