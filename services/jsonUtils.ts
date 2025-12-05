@@ -1,6 +1,8 @@
 /**
  * Removes C-style comments (// and /* ... *\/) from a string.
  */
+import { processSingleQuotes } from './singleQuoteProcessor';
+
 export const stripComments = (jsonString: string): string => {
   // Regex to match single line // comments and multi-line /* */ comments
   // It handles ignoring these patterns if they appear inside quotes
@@ -15,12 +17,25 @@ export const safeParse = (input: string): any => {
   try {
     return JSON.parse(input);
   } catch (e) {
-    // If standard parse fails, try stripping comments (JSON5 style)
+    // If standard parse fails, try processing single quotes first
     try {
-      const clean = stripComments(input);
-      return JSON.parse(clean);
+      const processed = processSingleQuotes(input);
+      return JSON.parse(processed);
     } catch (e2) {
-      throw e; // Throw original error or e2 depending on need, usually original is better context if not comments
+      // If single quote processing fails, try stripping comments (JSON5 style)
+      try {
+        const clean = stripComments(input);
+        return JSON.parse(clean);
+      } catch (e3) {
+        // If comment stripping fails, try processing single quotes on stripped input
+        try {
+          const stripped = stripComments(input);
+          const processed = processSingleQuotes(stripped);
+          return JSON.parse(processed);
+        } catch (e4) {
+          throw e; // Throw original error if all attempts fail
+        }
+      }
     }
   }
 };

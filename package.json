@@ -7,7 +7,8 @@
         "dev": "vite",
         "build": "vite build",
         "build:gh-pages": "GITHUB_PAGES=true vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test": "jest"
     },
     "dependencies": {
         "@google/genai": "^1.30.0",
@@ -18,14 +19,18 @@
     "devDependencies": {
         "@tailwindcss/postcss": "^4.1.17",
         "@tailwindcss/vite": "^4.1.17",
+        "@types/jest": "^30.0.0",
         "@types/node": "^22.14.0",
         "@vitejs/plugin-react": "^5.0.0",
         "autoprefixer": "^10.4.22",
         "canvas": "^3.2.0",
+        "jest": "^30.2.0",
         "sharp": "^0.34.5",
         "svg-to-png-cli": "^1.2.0",
         "tailwindcss": "^4.1.17",
         "to-ico": "^1.1.5",
+        "ts-jest": "^29.4.6",
+        "ts-node": "^10.9.2",
         "typescript": "~5.8.2",
         "vite": "^6.2.0"
     }

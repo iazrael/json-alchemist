@@ -29,9 +29,12 @@ export const fixJsonWithGemini = async (malformedJson: string): Promise<string> 
       3. If the input looks like LLM conversation history (array of objects with role/content fields), treat it as regular JSON:
          - Fix any syntax errors
          - Ensure output is valid standard JSON format
-      4. Return ONLY the valid, minified JSON string.
-      5. Do not wrap the output in markdown code blocks.
-      6. Do not include any explanation.
+      4. Handle single-quoted JSON strings:
+         - Keys and string values wrapped in single quotes should be converted to double quotes
+         - For example, [{'key': 'value'}] should become [{"key": "value"}]
+      5. Return ONLY the valid, minified JSON string.
+      6. Do not wrap the output in markdown code blocks.
+      7. Do not include any explanation.
 
       Input:
       ${malformedJson}`,

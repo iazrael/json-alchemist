@@ -27,9 +27,12 @@ Task:
 4. If the input looks like natural language instructions rather than JSON data:
    - Try to convert it to valid JSON if possible
    - For example, extract JSON-like structures or convert the intent into JSON format
-5. Return ONLY the valid, minified JSON string.
-6. Do not wrap the output in markdown code blocks.
-7. Do not include any explanation.`;
+5. Handle single-quoted JSON strings:
+   - Keys and string values wrapped in single quotes should be converted to double quotes
+   - For example, [{'key': 'value'}] should become [{"key": "value"}]
+6. Return ONLY the valid, minified JSON string.
+7. Do not wrap the output in markdown code blocks.
+8. Do not include any explanation.`;
 
   try {
     const response = await fetch(endpoint, {
