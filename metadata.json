@@ -1,0 +1,5 @@
+{
+  "name": "JSON Alchemist",
+  "description": "A powerful JSON and JSON5 formatter, validator, and minifier. Features syntax highlighting, comment removal, and AI-powered repair for malformed JSON and Golang maps.",
+  "requestFramePermissions": []
+}
